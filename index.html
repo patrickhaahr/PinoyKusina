@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PinoyKusina - Super Delicious Filipino Food!</title>
+    <!-- Favicon --> 
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="manifest" href="/images/site.webmanifest">
+    <!-- Custom StyleSheet -->
+    <link rel="stylesheet" href="./style.css" />
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Rubik:wght@400;500;600;700&family=Shadows+Into+Light&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="preload" 
+      as="image"
+      href="./images/hero-banner.png"
+      media="(min-width: 768px)"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="./images/hero-banner-bg.png"
+      media="(min-width: 768px)"
+    />
+    <link rel="preload" as="image" href="./images/hero-bg.jpg" />
+  </head>
+
+  <body id="top">
+    <!-- HEADER -->
+    <header class="header" data-header>
+      <div class="container">
+        <h1>
+          <a href="#" class="logo">PinoyKusina</a>
+        </h1>
+
+        <nav class="navbar" data-navbar>
+          <ul class="navbar-list">
+            <li class="nav-item">
+              <a href="#home" class="navbar-link" data-nav-link>Home</a>
+            </li>
+
+            <li class="nav-item">
+              <a href="#about" class="navbar-link" data-nav-link>About Us</a>
+            </li>
+
+            <li class="nav-item">
+              <a href="#food-menu" class="navbar-link" data-nav-link>Shop</a>
+            </li>
+
+            <li class="nav-item">
+              <a href="#footer" class="navbar-link" data-nav-link>Contact Us</a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- index.html -->
+
+        <!-- <button class="btn btn-hover">Reservation</button> -->
+
+        <!-- Hamburger Button -->
+<button class="hamburger" aria-label="Menu" onclick="toggleMenu()">
+  <ion-icon name="cart-outline"></ion-icon>
+  <span id="item-count">0 Items</span>
+  <span id="order-total"> - 0.00DKK</span>
+</button>
+
+<!-- Hamburger Menu -->
+<div class="hamburger-menu">
+  <div id="order-summary">
+      <a href="#" id="show-order">Show Order</a>
+      <span id="menu-item-count">0 Items</span>
+      <span id="menu-order-total">Total: $0.00</span>
+  </div>
+</div>
+          <!--
+            The nav-toggle-btn is a responsive menu toggle button.
+            When the screen is wider than 768px, the navbar is always shown.
+            When the screen is narrower than 768px, the navbar is hidden by default.
+            The nav-toggle-btn is only visible on mobile devices, and it toggles the navbar's visibility.
+          -->
+          <button
+            class="nav-toggle-btn"
+            aria-label="Toggle Menu"
+            data-menu-toggle-btn
+          >
+            <span class="line top"></span>
+            <span class="line middle"></span>
+            <span class="line bottom"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section
+        class="hero"
+        id="home"
+        style="background-image: url('./images/hero-bg.png')"
+      >
+        <div class="container">
+          <div class="hero-content">
+            <h2 class="h1 hero-title">Super Delicious Filipino Food!</h2>
+            <p class="hero-text">
+              Authentic and delicious Filipino food, prepared with love and care.
+            </p>
+          </div>
+          <figure class="hero-banner">
+            <img
+              src="./images/hero-banner-bg.png"
+              width="820"
+              height="716"
+              alt=""
+              aria-hidden="true"
+              class="w-100 hero-img-bg"
+            />
+            <img
+              src="./images/hero-banner.png"
+              width="700"
+              height="637"
+              loading="lazy"
+              alt="Filipino Food"
+              class="w-100 hero-img"
+            />
+          </figure>
+        </div>
+      </section>
+
+      <!-- FOOD MENU -->
+      <section class="section food-menu" id="food-menu">
+        <div class="container">
+          <h2 class="h2 section-title">
+            Our Delicious <span class="span">Foods</span>
+          </h2>
+          <p class="section-text">
+            Authentic and delicious Filipino food, prepared with love and care.
+          </p>
+          <ul class="fiter-list">
+            <li><button class="filter-btn" data-filter="All">All</button></li>
+            <li><button class="filter-btn" data-filter="Main Dishes">Main Dishes</button></li>
+            <li><button class="filter-btn" data-filter="Snacks">Snacks</button></li>
+            <li><button class="filter-btn" data-filter="Desserts">Desserts</button></li>
+            <li><button class="filter-btn" data-filter="Drinks">Drinks</button></li>
+          </ul>
+          <!-- index.html: Place this where you want the food menu list to appear -->
+          <ul class="food-menu-list">
+          <!-- The list items will be dynamically inserted here by the script.js -->
+          </ul>
+        </div>
+      </section>
+
+      <!-- ORDER DETAILS -->
+      <section id="order-details">
+        <div class="container">
+          <h2>Your Order</h2>
+          <ul id="order-details-list"></ul>
+          <div>Total: <span id="total">0</span><span>DKK</span></div>
+          <button onclick="submitOrder()">Place Order</button>
+          <button onclick="cancelOrder()">Cancel Order</button>
+        </div>
+      </section>
+
+      <!-- 
+    - #FOOTER
+  -->
+
+      <footer id="footer">
+        <div
+          class="footer-top"
+          style="background-image: url('./images/footer-illustration.png')"
+        >
+          <div class="container">
+            <div class="footer-brand">
+              <a href="" class="logo">PinoyKusina</a>
+
+              <p class="footer-text">Authentic Filipino Cuisine</p>
+
+              <ul class="social-list">
+                <li>
+                  <a href="#" class="social-link">
+                    <ion-icon name="logo-facebook"></ion-icon>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="social-link">
+                    <ion-icon name="logo-instagram"></ion-icon>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="social-link">
+                    <ion-icon name="logo-twitter"></ion-icon>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <ul class="footer-list">
+              <li>
+                <p class="footer-list-title">Contact Info</p>
+              </li>
+
+              <li>
+                <p class="footer-list-item">+45 12345678</p>
+              </li>
+
+              <li>
+                <p class="footer-list-item">PinoyKusina@food.com</p>
+              </li>
+
+              <li>
+                <address class="footer-list-item">2500 Valby, Denmark</address>
+              </li>
+            </ul>
+
+            <ul class="footer-list">
+              <li>
+                <p class="footer-list-title">Opening Hours</p>
+              </li>
+
+              <li>
+                <p class="footer-list-item">Tuesday-Friday: 15:00-21:00</p>
+              </li>
+
+              <li>
+                <p class="footer-list-item">Saturday-Sunday: 15:00-23:00</p>
+              </li>
+            </ul>
+            
+        <div class="footer-bottom">
+          <div class="container">
+            <p class="copyright-text">
+              &copy; 2024 <a href="#" class="copyright-link">PH</a> All Rights
+              Reserved.
+            </p>
+          </div>
+        </div>
+      </footer>
+
+      <!-- BACK TO TOP BUTTON -->
+
+      <a href="#top" class="back-top-btn" aria-label="Back to top" data-back-top-btn>
+        <ion-icon name="chevron-up"></ion-icon>
+      </a>
+
+    </main>
+    <script src="script.js"></script>
+
+    <!-- ionicon link -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  </body>
+</html>
+
