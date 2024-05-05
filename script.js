@@ -126,7 +126,7 @@ function createMenuItem(item) {
             <h3 class="h3 card-title">${item.name}</h3>
             <div class="price-wrapper">
                 <p class="price-text">Price:</p>
-                <data class="price">${item.price}kr</data>
+                <data class="price">${item.price}kr.</data>
             </div>
         </div>`;
     return li;
@@ -158,7 +158,7 @@ function addItem(itemName, price) {
     orderedItems.push({ name: itemName, price });
     const orderList = document.getElementById('order-details-list');
     const item = document.createElement('li');
-    item.textContent = `${itemName} - $${price}`;
+    item.textContent = `${itemName} - ${price}kr.`;
     orderList.appendChild(item);
     currentTotal += price;
     updateTotal();
@@ -183,9 +183,9 @@ function updateOrderDetails() {
     const total = getOrderTotal();
     if (quantity > 0) {
         itemCountElement.textContent = `${quantity} Items`;
-        orderTotalElement.textContent = ` - $${total.toFixed(2)}`;
+        orderTotalElement.textContent = ` - ${total.toFixed(2)}kr.`;
         menuItemCountElement.textContent = `${quantity} Items`;
-        menuOrderTotalElement.textContent = `Total: $${total.toFixed(2)}`;
+        menuOrderTotalElement.textContent = `Total: ${total.toFixed(2)}kr.`;
         itemCountElement.style.display = 'inline';
         orderTotalElement.style.display = 'inline';
         document.getElementById('show-order').style.display = 'block';

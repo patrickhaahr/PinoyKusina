@@ -604,11 +604,13 @@ position: relative;
 
 .food-menu-card .del { color: var(--gray-x-11-gray); }
 
+/*-----------------------------------*\
+  #Order details
+\*-----------------------------------*/
 
-
-
-
-
+#total, #total + span {
+  display: inline;
+}
 
 /*-----------------------------------*\
   #FOOTER
