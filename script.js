@@ -49,7 +49,7 @@ document.getElementById('cart-btn').addEventListener('click', toggleCartDropdown
 function updateCartButtons() {
     const quantity = getOrderQuantity();
     const total = getOrderTotal();
-    document.getElementById('cart-btn').textContent = `${quantity} Items - $${total.toFixed(2)}`;
+    document.getElementById('cart-btn').textContent = `(${quantity}) Show order ${total.toFixed(2)}kr`;
     updateOrderDetails();
 }
 
@@ -143,7 +143,7 @@ function updateMenuDisplay(filter) {
       }
     });
   }
-  
+
 const foodMenuList = document.querySelector('.food-menu-list');
 menuItems.forEach(item => {
     foodMenuList.appendChild(createMenuItem(item));
