@@ -37,8 +37,6 @@ filterButtons.forEach(button => {
 
 document.addEventListener('DOMContentLoaded', (event) => {
     updateMenuDisplay('All');
-
-    // Your code that depends on DOM elements
 });
 
 function toggleCartDropdown() {
@@ -134,12 +132,24 @@ function createMenuItem(item) {
     return li;
 }
 
+function updateMenuDisplay(filter) {
+    const foodMenuList = document.querySelector('.food-menu-list');
+    foodMenuList.innerHTML = ''; // Clear the current list
+  
+    // Append items that match the filter or all items if filter is 'All'
+    menuItems.forEach(item => {
+      if (filter === 'All' || item.category === filter) {
+        foodMenuList.appendChild(createMenuItem(item));
+      }
+    });
+  }
+  
 const foodMenuList = document.querySelector('.food-menu-list');
 menuItems.forEach(item => {
     foodMenuList.appendChild(createMenuItem(item));
 });
 
-let orderNumber = 1;  // Starting order number
+let orderNumber = 1;
 let totalSales = 0;
 let currentTotal = 0;
 let orderedItems = [];
