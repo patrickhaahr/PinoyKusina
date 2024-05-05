@@ -35,8 +35,10 @@ filterButtons.forEach(button => {
     });
 });
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', (event) => {
     updateMenuDisplay('All');
+
+    // Your code that depends on DOM elements
 });
 
 function toggleCartDropdown() {
@@ -152,7 +154,6 @@ function addItem(itemName, price) {
     orderList.appendChild(item);
     currentTotal += price;
     updateTotal();
-    updateOrderDetails();
     updateCartButtons();
 }
 
