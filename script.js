@@ -139,6 +139,8 @@ menuItems.forEach(item => {
     foodMenuList.appendChild(createMenuItem(item));
 });
 
+let orderNumber = 1;  // Starting order number
+let totalSales = 0;
 let currentTotal = 0;
 let orderedItems = [];
 
@@ -150,8 +152,10 @@ function addItem(itemName, price) {
     orderList.appendChild(item);
     currentTotal += price;
     updateTotal();
+    updateOrderDetails();
     updateCartButtons();
 }
+
 
 function getOrderQuantity() {
     return orderedItems.length;
@@ -192,8 +196,10 @@ function updateTotal() {
 }
 
 function submitOrder() {
-    alert(`Order placed. Total: ${currentTotal} DKK.`);
-    resetOrder();
+  alert(`Order #${orderNumber} placed. Total: ${currentTotal} kr.`);
+  totalSales += currentTotal;
+  orderNumber++;
+  resetOrder();
 }
 
 function cancelOrder() {
