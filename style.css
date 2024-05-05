@@ -417,60 +417,39 @@
   
   .navbar-link:is(:hover, :focus) { color: var(--dark-orange); }
 
-
-/* Hamburger Menu */
-
-  /* Add your own styles for positioning, colors, etc. */
-.hamburger {
-  display: true; /* Hidden by default, will be displayed in mobile view */
-  /* Other styling here */
-}
-
-.hamburger-menu {
-  display: none; /* Hidden by default */
-  /* Add styles for the dropdown menu */
-}
-
-/* Toggle the hamburger menu on small screens */
-@media screen and (max-width: 768px) {
-  .hamburger {
-      display: block;
-  }
-
-  .hamburger-menu.active {
-      display: block;
-  }
-
-  .btn.btn-hover {
-      display: none; /* Hide the reservation button on small screens */
-  }
-}
-
-/* Add styling for the order details in the hamburger button */
-.hamburger #item-count,
-.hamburger #order-total,
-#show-order {
-    display: none;
-    /* Styling for the display of item count and total */
-}
-
-/* Styling for the dropdown order summary */
-#order-summary {
-    /* Styling for the dropdown order summary */
-}
-
-/* Styling for the 'Show Order' link */
-#show-order {
-    /* Styling for the 'Show Order' link */
-}
-
-/* Styling for item count and total in the dropdown */
-#menu-item-count,
-#menu-order-total {
-    /* Styling for item count and total in the dropdown */
-}
-  
   /*-----------------------------------*\
+    #Dropdown Menu 
+  \*-----------------------------------*/
+/* shopping-cart-dropdown styling */
+.shopping-cart-dropdown {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  width: 300px;
+  max-height: 400px;
+  overflow-y: auto;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  z-index: 10;
+  padding: 10px;
+}
+
+.cart-btn {
+  display: inline-block;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.shopping-cart-buttons {
+  display: flex;
+  gap: 10px;
+  position: relative;
+}
+
+   /*-----------------------------------*\
     #HERO
   \*-----------------------------------*/
   
@@ -511,11 +490,6 @@
     background-color: var(--white);
     color: var(--black);
   }
-  
-  
-  
-  
-  
   /*-----------------------------------*\
     #FOOD MENU
   \*-----------------------------------*/
