@@ -46,14 +46,12 @@ function toggleCartDropdown() {
     dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
 }
 
-document.getElementById('cart-quantity-btn').addEventListener('click', toggleCartDropdown);
-document.getElementById('cart-total-btn').addEventListener('click', toggleCartDropdown);
+document.getElementById('cart-btn').addEventListener('click', toggleCartDropdown);
 
 function updateCartButtons() {
     const quantity = getOrderQuantity();
     const total = getOrderTotal();
-    document.getElementById('cart-quantity-btn').textContent = `${quantity} Items`;
-    document.getElementById('cart-total-btn').textContent = `${quantity} Items - $${total.toFixed(2)}`;
+    document.getElementById('cart-btn').textContent = `${quantity} Items - $${total.toFixed(2)}`;
     updateOrderDetails();
 }
 
