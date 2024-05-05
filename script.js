@@ -49,7 +49,7 @@ document.getElementById('cart-btn').addEventListener('click', toggleCartDropdown
 function updateCartButtons() {
     const quantity = getOrderQuantity();
     const total = getOrderTotal();
-    document.getElementById('cart-btn').textContent = `(${quantity}) Show order ${total.toFixed(2)}kr`;
+    document.getElementById('cart-btn').textContent = `(${quantity}) Show order ${total.toFixed(2)}kr.`;
     updateOrderDetails();
 }
 
@@ -155,46 +155,43 @@ let currentTotal = 0;
 let orderedItems = [];
 
 function addItem(itemName, price) {
-    orderedItems.push({ name: itemName, price });
-    const orderList = document.getElementById('order-details-list');
-    const item = document.createElement('li');
-    item.textContent = `${itemName} - ${price}kr.`;
-    orderList.appendChild(item);
+    if (orderedItems[itemName]) {
+        orderedItems[itemName].quantity += 1;
+    } else {
+        orderedItems[itemName] = { price, quantity: 1 };
+    }
     currentTotal += price;
-    updateTotal();
+    updateOrderDetails();
     updateCartButtons();
 }
 
-
 function getOrderQuantity() {
-    return orderedItems.length;
+    return Object.values(orderedItems).reduce((acc, item) => acc + item.quantity, 0);
 }
 
 function getOrderTotal() {
-    return orderedItems.reduce((acc, item) => acc + item.price, 0);
+    return Object.values(orderedItems).reduce((acc, item) => acc + item.price * item.quantity, 0);
 }
 
 function updateOrderDetails() {
-    const itemCountElement = document.getElementById('item-count');
-    const orderTotalElement = document.getElementById('order-total');
-    const menuItemCountElement = document.getElementById('menu-item-count');
-    const menuOrderTotalElement = document.getElementById('menu-order-total');
-    const quantity = getOrderQuantity();
-    const total = getOrderTotal();
-    if (quantity > 0) {
-        itemCountElement.textContent = `${quantity} Items`;
-        orderTotalElement.textContent = ` - ${total.toFixed(2)}kr.`;
-        menuItemCountElement.textContent = `${quantity} Items`;
-        menuOrderTotalElement.textContent = `Total: ${total.toFixed(2)}kr.`;
-        itemCountElement.style.display = 'inline';
-        orderTotalElement.style.display = 'inline';
-        document.getElementById('show-order').style.display = 'block';
-    } else {
-        itemCountElement.style.display = 'none';
-        orderTotalElement.style.display = 'none';
-        document.getElementById('show-order').style.display = 'none';
+    const orderList = document.getElementById('order-details-list');
+    orderList.innerHTML = '';
+
+    for (const itemName in orderedItems) {
+        const item = orderedItems[itemName];
+        const listItem = document.createElement('li');
+        listItem.textContent = `${itemName} x${item.quantity} - ${item.price * item.quantity}kr.`;
+        orderList.appendChild(listItem);
     }
-    getOrderTotal();
+
+    const total = getOrderTotal();
+    document.getElementById('total').textContent = `${total.toFixed(2)}`;
+    document.getElementById('cart-btn').textContent = `(${getOrderQuantity()}) Show order ${total.toFixed(2)}kr.`;
+
+    // If the cart is empty, hide the dropdown
+    if (total === 0) {
+        document.getElementById('shopping-cart-dropdown').style.display = 'none';
+    }
 }
 
 updateOrderDetails();
@@ -205,10 +202,11 @@ function updateTotal() {
 }
 
 function submitOrder() {
-  alert(`Order #${orderNumber} placed. Total: ${currentTotal} kr.`);
-  totalSales += currentTotal;
-  orderNumber++;
-  resetOrder();
+    alert(`Order #${orderNumber} placed. Total: ${currentTotal} kr.`);
+    totalSales += currentTotal;
+    orderNumber++;
+    resetOrder();
+    updateCartButtons(); // Remove this line
 }
 
 function cancelOrder() {
@@ -218,12 +216,12 @@ function cancelOrder() {
 }
 
 function resetOrder() {
-    orderedItems = [];
-    const orderList = document.getElementById('order-details-list');
-    orderList.innerHTML = '';
+    orderedItems = {};
     currentTotal = 0;
+    updateOrderDetails();
     updateTotal();
     updateCartButtons();
+    document.getElementById('shopping-cart-dropdown').style.display = 'none';
 }
 
 document.querySelector('.search-btn').addEventListener('click', function () {
