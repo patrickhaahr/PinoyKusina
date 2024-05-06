@@ -50,7 +50,7 @@ function updateCartButtons() {
     const quantity = getOrderQuantity();
     const total = getOrderTotal();
     document.getElementById('cart-btn').textContent = `(${quantity}) Show order ${total.toFixed(2)}kr.`;
-    updateOrderDetails();
+    document.getElementById('total').textContent = `${total.toFixed(2)}`;
 }
 
 document.getElementById('shopping-cart-dropdown').style.display = 'none';
@@ -68,6 +68,13 @@ const menuItems = [
         price: 120,
         imageSrc: './images/Pancit.png',
         imageAlt: 'Pancit',
+        category: 'Main Dishes'
+    },
+    {
+        name: 'Chicken Sopas',
+        price: 80,
+        imageSrc: './images/sopas.png',
+        imageAlt: 'Chicken sopas',
         category: 'Main Dishes'
     },
     {
@@ -174,27 +181,42 @@ function getOrderTotal() {
 }
 
 function updateOrderDetails() {
+    document.getElementById('order-number').textContent = orderNumber;
     const orderList = document.getElementById('order-details-list');
     orderList.innerHTML = '';
 
     for (const itemName in orderedItems) {
         const item = orderedItems[itemName];
         const listItem = document.createElement('li');
-        listItem.textContent = `${itemName} x${item.quantity} - ${item.price * item.quantity}kr.`;
+        listItem.innerHTML = `
+            <button class="modify-btn" onclick="addItem('${itemName}', ${item.price})">+</button>
+            x<span>${item.quantity}</span><button class="modify-btn" onclick="removeItem('${itemName}')">-</button>${itemName} ${item.price * item.quantity}kr.
+        `;
         orderList.appendChild(listItem);
     }
+    updateCartButtons();
 
     const total = getOrderTotal();
     document.getElementById('total').textContent = `${total.toFixed(2)}`;
     document.getElementById('cart-btn').textContent = `(${getOrderQuantity()}) Show order ${total.toFixed(2)}kr.`;
-
     // If the cart is empty, hide the dropdown
     if (total === 0) {
         document.getElementById('shopping-cart-dropdown').style.display = 'none';
     }
 }
-
 updateOrderDetails();
+function removeItem(itemName) {
+    if (orderedItems[itemName].quantity > 1) {
+        orderedItems[itemName].quantity -= 1;
+        currentTotal -= orderedItems[itemName].price;
+    } else {
+        currentTotal -= orderedItems[itemName].price;
+        delete orderedItems[itemName];
+    }
+    updateOrderDetails();
+}
+
+
 
 function updateTotal() {
     const totalElement = document.getElementById('total');
@@ -202,11 +224,18 @@ function updateTotal() {
 }
 
 function submitOrder() {
-    alert(`Order #${orderNumber} placed. Total: ${currentTotal} kr.`);
+    let orderDetails = "Order #" + orderNumber + ":\n";
+    for (const itemName in orderedItems) {
+        const item = orderedItems[itemName];
+        orderDetails += `x${item.quantity} ${itemName} - ${item.price * item.quantity}kr.\n`;
+    }
+    orderDetails += `Total: ${currentTotal} kr.`;
+    alert(orderDetails);
+    // Reset order after showing details
     totalSales += currentTotal;
+    document.getElementById('total-revenue').textContent = totalSales.toFixed(2);
     orderNumber++;
     resetOrder();
-    updateCartButtons(); // Remove this line
 }
 
 function cancelOrder() {

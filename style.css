@@ -437,7 +437,7 @@ padding: 10px;
 .cart-btn {
 display: inline-block;
 padding: 10px;
-background-color: #f5f5f5;
+background-color: var(--bg-color, var(--deep-saffron));
 border: 1px solid #ddd;
 cursor: pointer;
 }
@@ -446,6 +446,30 @@ cursor: pointer;
 display: flex;
 gap: 10px;
 position: relative;
+}
+.button-container button {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 5px;
+  background-color: var(--deep-saffron);
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+h2 span {
+  display: inline; /* this is default, but it's included to ensure the span is not set to block somewhere else in your CSS */
+}
+/* Modify Buttons Styling */
+.modify-btn {
+  margin-left: 5px;
+  background-color: #ddd;
+  border: none;
+  cursor: pointer;
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+#order-details-list li span,
+#order-details-list li .modify-btn {
+    display: inline; /* This ensures they are displayed inline */
 }
 
  /*-----------------------------------*\
@@ -471,16 +495,17 @@ position: relative;
 }
 
 .hero-title {
-  color: var(--champagne-pink);
+  color: var(--white);
   max-width: 12ch;
   margin-inline: auto;
 }
 
 .hero-text {
-  color: var(--desert-sand);
+  color: var(--white);
   margin-block: 15px 30px;
   max-width: 44ch;
   margin-inline: auto;
+  text-align: center;
 }
 
 .hero .btn { margin-inline: auto; }
@@ -687,6 +712,9 @@ position: relative;
 
 .footer-list address { max-width: 20ch; }
 
+#total-revenue {
+  display: inline;
+}
 .footer-form {
   background-color: var(--white);
   padding: 30px;
@@ -861,7 +889,18 @@ textarea.input-field {
     z-index: 1;
   }
 
-  .hero-content > :is(*, .btn) { margin-inline: 0; }
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    top: 100px; /* changed this line */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+  }
 
   .hero-banner {
     display: block;
@@ -876,6 +915,7 @@ textarea.input-field {
   .hero-img {
     position: absolute;
     bottom: 0;
+    margin-left: 55px;
   }
 
   .hero::after {
@@ -1003,8 +1043,6 @@ textarea.input-field {
   }
 
   .hero-img-bg { transform: scale(1.4) translate(20px, -20px); }
-
-
 
   /**
    * FOOD MENU

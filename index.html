@@ -24,28 +24,32 @@
     <!-- HEADER -->
     <header class="header" data-header>
         <div class="container">
-            <h1><a href="#" class="logo">PinoyKusina</a></h1>
+            <h1><a href="#" class="logo">Pinoy<span class="span">Kusina</span></a></h1>
             <nav class="navbar" data-navbar>
                 <ul class="navbar-list">
                     <li class="nav-item"><a href="#home" class="navbar-link" data-nav-link>Home</a></li>
                     <li class="nav-item"><a href="#about" class="navbar-link" data-nav-link>About Us</a></li>
                     <li class="nav-item"><a href="#food-menu" class="navbar-link" data-nav-link>Shop</a></li>
                     <li class="nav-item"><a href="#footer" class="navbar-link" data-nav-link>Contact Us</a></li>
-                </ul>
+                
+                <div class="shopping-cart-buttons">
+                    <button id="cart-btn" class="navbar-link"><ion-icon name="cart-outline"></ion-icon></button>
+                </div>
+            </ul>
             </nav>
             <!-- Shopping Cart Buttons -->
-            <div class="shopping-cart-buttons">
-                <button id="cart-btn" class="cart-btn"><ion-icon name="cart-outline"></ion-icon></button>
-            </div>
+            
             <!-- Dropdown Menu Container -->
             <div class="shopping-cart-dropdown" id="shopping-cart-dropdown" style="display: none;">
                 <!-- ORDER DETAILS -->
                 <section id="order-details">
-                    <h2>Your Order</h2>
+                    <h2>Your Order #<span id="order-number"></span></h2>
                     <ul id="order-details-list"></ul>
                     <div>Total: <span id="total">0</span><span>kr.</span></div>
-                    <button onclick="submitOrder()">Place Order</button>
-                    <button onclick="cancelOrder()">Cancel Order</button>
+                    <div class="button-container">
+                        <button onclick="submitOrder()">Place Order</button>
+                        <button onclick="cancelOrder()">Cancel Order</button>
+                    </div>
                 </section>
             </div>
             <button class="nav-toggle-btn" aria-label="Toggle Menu" data-menu-toggle-btn>
@@ -60,8 +64,8 @@
         <section class="hero" id="home" style="background-image: url('./images/hero-bg.png')">
             <div class="container">
                 <div class="hero-content">
-                    <h2 class="h1 hero-title">Super Delicious Filipino Food!</h2>
-                    <p class="hero-text">Authentic and delicious Filipino food, prepared with love and care.</p>
+                    <h2 class="h1 hero-title">Masarap!</h2>
+                    <p class="hero-text">Tastes just like the Philippines!</p>
                 </div>
                 <figure class="hero-banner">
                     <img src="./images/hero-banner-bg.png" width="820" height="716" alt="" aria-hidden="true" class="w-100 hero-img-bg">
@@ -109,11 +113,15 @@
                         <li><p class="footer-list-item">Tuesday-Friday: 15:00-21:00</p></li>
                         <li><p class="footer-list-item">Saturday-Sunday: 15:00-23:00</p></li>
                     </ul>
-                    <div class="footer-bottom">
-                        <div class="container">
-                            <p class="copyright-text">&copy; 2024 <a href="#" class="copyright-link">PH</a> All Rights Reserved.</p>
-                        </div>
-                    </div>
+                    <ul class="footer-list">
+                        <li><p class="footer-list-title">Total Revenue</p></li>
+                        <li><p class="footer-list-item"><span id="total-revenue">0.00</span>DKK</p></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="container">
+                    <p class="copyright-text">&copy; 2024 <a href="#" class="copyright-link">PQH</a> All Rights Reserved.</p>
                 </div>
             </div>
         </footer>
