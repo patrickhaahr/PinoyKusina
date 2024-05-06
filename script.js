@@ -71,6 +71,13 @@ const menuItems = [
         category: 'Main Dishes'
     },
     {
+        name: 'Chicken Sopas',
+        price: 80,
+        imageSrc: './images/sopas.png',
+        imageAlt: 'Chicken sopas',
+        category: 'Main Dishes'
+    },
+    {
         name: 'Lumpia',
         price: 30,
         imageSrc: './images/Lumpia.png',
