@@ -478,16 +478,17 @@ position: relative;
 }
 
 .hero-title {
-  color: var(--champagne-pink);
+  color: var(--white);
   max-width: 12ch;
   margin-inline: auto;
 }
 
 .hero-text {
-  color: var(--desert-sand);
+  color: var(--white);
   margin-block: 15px 30px;
   max-width: 44ch;
   margin-inline: auto;
+  text-align: center;
 }
 
 .hero .btn { margin-inline: auto; }
@@ -868,7 +869,18 @@ textarea.input-field {
     z-index: 1;
   }
 
-  .hero-content > :is(*, .btn) { margin-inline: 0; }
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    top: 100px; /* changed this line */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+  }
 
   .hero-banner {
     display: block;
@@ -883,6 +895,7 @@ textarea.input-field {
   .hero-img {
     position: absolute;
     bottom: 0;
+    margin-left: 55px;
   }
 
   .hero::after {
@@ -1001,7 +1014,7 @@ textarea.input-field {
   }
 
   .hero-text { font-size: var(--fs-3); }
-
+  
   .hero-banner {
     max-width: 45%;
     top: auto;
