@@ -188,15 +188,14 @@ function updateOrderDetails() {
     for (const itemName in orderedItems) {
         const item = orderedItems[itemName];
         const listItem = document.createElement('li');
-        listItem.textContent = `x${item.quantity} ${itemName} ${item.price * item.quantity}kr.`;
-        const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Remove';
-        deleteButton.onclick = function() {
-            removeItem(itemName);
-        };
-        listItem.appendChild(deleteButton);
+        listItem.innerHTML = `
+            <button class="modify-btn" onclick="addItem('${itemName}', ${item.price})">+</button>
+            x<span>${item.quantity}</span><button class="modify-btn" onclick="removeItem('${itemName}')">-</button>
+            ${itemName} ${item.price * item.quantity}kr.
+        `;
         orderList.appendChild(listItem);
     }
+    updateCartButtons();
 
     const total = getOrderTotal();
     document.getElementById('total').textContent = `${total.toFixed(2)}`;
@@ -211,11 +210,12 @@ updateOrderDetails();
 function removeItem(itemName) {
     if (orderedItems[itemName].quantity > 1) {
         orderedItems[itemName].quantity -= 1;
+        currentTotal -= orderedItems[itemName].price;
     } else {
+        currentTotal -= orderedItems[itemName].price;
         delete orderedItems[itemName];
     }
     updateOrderDetails();
-    updateCartButtons();
 }
 
 

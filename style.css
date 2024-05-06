@@ -458,6 +458,20 @@ position: relative;
 h2 span {
   display: inline; /* this is default, but it's included to ensure the span is not set to block somewhere else in your CSS */
 }
+/* Modify Buttons Styling */
+.modify-btn {
+  margin-left: 5px;
+  background-color: #ddd;
+  border: none;
+  cursor: pointer;
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+#order-details-list li span,
+#order-details-list li .modify-btn {
+    display: inline; /* This ensures they are displayed inline */
+}
+
  /*-----------------------------------*\
   #HERO
 \*-----------------------------------*/
