@@ -437,7 +437,7 @@ padding: 10px;
 .cart-btn {
 display: inline-block;
 padding: 10px;
-background-color: #f5f5f5;
+background-color: var(--bg-color, var(--deep-saffron));
 border: 1px solid #ddd;
 cursor: pointer;
 }
@@ -447,7 +447,14 @@ display: flex;
 gap: 10px;
 position: relative;
 }
-
+.button-container button {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 5px;
+  background-color: var(--deep-saffron);
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
  /*-----------------------------------*\
   #HERO
 \*-----------------------------------*/

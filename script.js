@@ -180,7 +180,7 @@ function updateOrderDetails() {
     for (const itemName in orderedItems) {
         const item = orderedItems[itemName];
         const listItem = document.createElement('li');
-        listItem.textContent = `${itemName} x${item.quantity} - ${item.price * item.quantity}kr.`;
+        listItem.textContent = `x${item.quantity} ${itemName} ${item.price * item.quantity}kr.`;
         orderList.appendChild(listItem);
     }
 
