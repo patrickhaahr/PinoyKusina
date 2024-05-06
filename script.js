@@ -226,12 +226,18 @@ function updateTotal() {
 }
 
 function submitOrder() {
-    alert(`Order #${orderNumber} placed. Total: ${currentTotal} kr.`);
+    let orderDetails = "Order #" + orderNumber + ":\n";
+    for (const itemName in orderedItems) {
+        const item = orderedItems[itemName];
+        orderDetails += `x${item.quantity} ${itemName} - ${item.price * item.quantity}kr.\n`;
+    }
+    orderDetails += `Total: ${currentTotal} kr.`;
+    alert(orderDetails);
+    // Reset order after showing details
     totalSales += currentTotal;
     document.getElementById('total-revenue').textContent = totalSales.toFixed(2);
     orderNumber++;
     resetOrder();
-    updateCartButtons(); // Remove this line 
 }
 
 function cancelOrder() {

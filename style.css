@@ -455,6 +455,9 @@ position: relative;
   border: 1px solid #ddd;
   cursor: pointer;
 }
+h2 span {
+  display: inline; /* this is default, but it's included to ensure the span is not set to block somewhere else in your CSS */
+}
  /*-----------------------------------*\
   #HERO
 \*-----------------------------------*/
