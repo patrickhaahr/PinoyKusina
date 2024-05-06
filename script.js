@@ -181,6 +181,7 @@ function getOrderTotal() {
 }
 
 function updateOrderDetails() {
+    document.getElementById('order-number').textContent = orderNumber;
     const orderList = document.getElementById('order-details-list');
     orderList.innerHTML = '';
 
