@@ -695,6 +695,9 @@ position: relative;
 
 .footer-list address { max-width: 20ch; }
 
+#total-revenue {
+  display: inline;
+}
 .footer-form {
   background-color: var(--white);
   padding: 30px;
@@ -1014,7 +1017,7 @@ textarea.input-field {
   }
 
   .hero-text { font-size: var(--fs-3); }
-  
+
   .hero-banner {
     max-width: 45%;
     top: auto;
@@ -1023,8 +1026,6 @@ textarea.input-field {
   }
 
   .hero-img-bg { transform: scale(1.4) translate(20px, -20px); }
-
-
 
   /**
    * FOOD MENU

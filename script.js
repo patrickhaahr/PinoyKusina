@@ -228,9 +228,10 @@ function updateTotal() {
 function submitOrder() {
     alert(`Order #${orderNumber} placed. Total: ${currentTotal} kr.`);
     totalSales += currentTotal;
+    document.getElementById('total-revenue').textContent = totalSales.toFixed(2);
     orderNumber++;
     resetOrder();
-    updateCartButtons(); // Remove this line
+    updateCartButtons(); // Remove this line 
 }
 
 function cancelOrder() {
