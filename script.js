@@ -188,6 +188,12 @@ function updateOrderDetails() {
         const item = orderedItems[itemName];
         const listItem = document.createElement('li');
         listItem.textContent = `x${item.quantity} ${itemName} ${item.price * item.quantity}kr.`;
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Remove';
+        deleteButton.onclick = function() {
+            removeItem(itemName);
+        };
+        listItem.appendChild(deleteButton);
         orderList.appendChild(listItem);
     }
 
@@ -200,8 +206,18 @@ function updateOrderDetails() {
         document.getElementById('shopping-cart-dropdown').style.display = 'none';
     }
 }
-
 updateOrderDetails();
+function removeItem(itemName) {
+    if (orderedItems[itemName].quantity > 1) {
+        orderedItems[itemName].quantity -= 1;
+    } else {
+        delete orderedItems[itemName];
+    }
+    updateOrderDetails();
+    updateCartButtons();
+}
+
+
 
 function updateTotal() {
     const totalElement = document.getElementById('total');
