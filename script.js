@@ -50,7 +50,7 @@ function updateCartButtons() {
     const quantity = getOrderQuantity();
     const total = getOrderTotal();
     document.getElementById('cart-btn').textContent = `(${quantity}) Show order ${total.toFixed(2)}kr.`;
-    updateOrderDetails();
+    document.getElementById('total').textContent = `${total.toFixed(2)}`;
 }
 
 document.getElementById('shopping-cart-dropdown').style.display = 'none';
@@ -190,8 +190,7 @@ function updateOrderDetails() {
         const listItem = document.createElement('li');
         listItem.innerHTML = `
             <button class="modify-btn" onclick="addItem('${itemName}', ${item.price})">+</button>
-            x<span>${item.quantity}</span><button class="modify-btn" onclick="removeItem('${itemName}')">-</button>
-            ${itemName} ${item.price * item.quantity}kr.
+            x<span>${item.quantity}</span><button class="modify-btn" onclick="removeItem('${itemName}')">-</button>${itemName} ${item.price * item.quantity}kr.
         `;
         orderList.appendChild(listItem);
     }
@@ -200,7 +199,6 @@ function updateOrderDetails() {
     const total = getOrderTotal();
     document.getElementById('total').textContent = `${total.toFixed(2)}`;
     document.getElementById('cart-btn').textContent = `(${getOrderQuantity()}) Show order ${total.toFixed(2)}kr.`;
-
     // If the cart is empty, hide the dropdown
     if (total === 0) {
         document.getElementById('shopping-cart-dropdown').style.display = 'none';
