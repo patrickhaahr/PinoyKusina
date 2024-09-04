@@ -213,14 +213,11 @@ function updateOrderDetails() {
     const item = orderedItems[itemName];
     const listItem = document.createElement("li");
     listItem.innerHTML = `
-            <button class="modify-btn" onclick="addItem('${itemName}', ${
-      item.price
-    })">+</button>
-            x<span>${
-              item.quantity
-            }</span><button class="modify-btn" onclick="removeItem('${itemName}')">-</button>${itemName} ${
-      item.price * item.quantity
-    }kr.
+            <button class="modify-btn" onclick="addItem('${itemName}', ${item.price
+      })">+</button>
+            x<span>${item.quantity
+      }</span><button class="modify-btn" onclick="removeItem('${itemName}')">-</button>${itemName} ${item.price * item.quantity
+      }kr.
         `;
     orderList.appendChild(listItem);
   }
@@ -250,20 +247,13 @@ function removeItem(itemName) {
   updateOrderDetails();
 }
 
-// Update the total cost in the dropdown
-function updateTotal() {
-  const totalElement = document.getElementById("total");
-  totalElement.textContent = currentTotal;
-}
-
 // Submit the order
 function submitOrder() {
   let orderDetails = "Order #" + orderNumber + ":\n";
   for (const itemName in orderedItems) {
     const item = orderedItems[itemName];
-    orderDetails += `x${item.quantity} ${itemName} - ${
-      item.price * item.quantity
-    }kr.\n`;
+    orderDetails += `x${item.quantity} ${itemName} - ${item.price * item.quantity
+      }kr.\n`;
   }
   orderDetails += `Total: ${currentTotal} kr.`;
   alert(orderDetails);

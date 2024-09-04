@@ -312,7 +312,7 @@ body.active {
   border-radius: 50px;
 }
 
-.section-title > .span {
+.section-title>.span {
   display: inline-block;
   color: var(--deep-saffron);
 }
@@ -330,6 +330,7 @@ body.active {
   0% {
     transform: scale(1);
   }
+
   100% {
     transform: scale(1.05);
   }
@@ -347,9 +348,7 @@ body.active {
 \*-----------------------------------*/
 
 /* .navbar, */
-.header-btn-group .btn {
-  display: none;
-}
+
 
 .header {
   --color: var(--white);
@@ -379,6 +378,7 @@ body.active {
   0% {
     transform: translateY(0);
   }
+
   100% {
     transform: translateY(100%);
   }
@@ -502,30 +502,34 @@ body.active {
   padding: 10px;
 }
 
-.cart-btn {
-  display: inline-block;
-  padding: 10px;
-  background-color: var(--bg-color, var(--deep-saffron));
-  border: 1px solid #ddd;
-  cursor: pointer;
-}
-
 .shopping-cart-buttons {
   display: flex;
-  gap: 10px;
-  position: relative;
+  align-items: center;
 }
-.button-container button {
-  display: inline-block;
-  margin-right: 10px;
-  padding: 5px;
+
+#cart-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
   background-color: var(--deep-saffron);
-  border: 1px solid #ddd;
-  cursor: pointer;
+  color: var(--white);
+  border-radius: 5px;
 }
+
+#cart-btn ion-icon {
+  font-size: 1.8rem;
+}
+
+#cart-text {
+  font-size: 1.4rem;
+}
+
 h2 span {
-  display: inline; /* this is default, but it's included to ensure the span is not set to block somewhere else in your CSS */
+  display: inline;
+  /* this is default, but it's included to ensure the span is not set to block somewhere else in your CSS */
 }
+
 /* Modify Buttons Styling */
 .modify-btn {
   margin-left: 5px;
@@ -535,9 +539,11 @@ h2 span {
   padding: 2px 5px;
   border-radius: 3px;
 }
+
 #order-details-list li span,
 #order-details-list li .modify-btn {
-  display: inline; /* This ensures they are displayed inline */
+  display: inline;
+  /* This ensures they are displayed inline */
 }
 
 /*-----------------------------------*\
@@ -586,6 +592,7 @@ h2 span {
   background-color: var(--white);
   color: var(--black);
 }
+
 /*-----------------------------------*\
   #FOOD MENU
 \*-----------------------------------*/
@@ -718,7 +725,7 @@ h2 span {
 \*-----------------------------------*/
 
 #total,
-#total + span {
+#total+span {
   display: inline;
 }
 
@@ -743,6 +750,7 @@ h2 span {
   0% {
     left: -160px;
   }
+
   100% {
     left: 100%;
   }
@@ -803,7 +811,7 @@ h2 span {
   box-shadow: inset -5px 0 0 var(--white);
 }
 
-.footer-list > li:not(:last-child) {
+.footer-list>li:not(:last-child) {
   margin-block-end: 15px;
 }
 
@@ -814,6 +822,7 @@ h2 span {
 #total-revenue {
   display: inline;
 }
+
 .footer-form {
   background-color: var(--white);
   padding: 30px;
@@ -936,7 +945,7 @@ textarea.input-field {
     margin-inline: auto;
   }
 
-  .has-scrollbar > li {
+  .has-scrollbar>li {
     min-width: calc(50% - 5px);
   }
 
@@ -987,7 +996,8 @@ textarea.input-field {
     align-items: center;
     justify-content: flex-start;
     position: absolute;
-    top: 100px; /* changed this line */
+    top: 100px;
+    /* changed this line */
     left: 0;
     right: 0;
     bottom: 0;
@@ -1017,7 +1027,6 @@ textarea.input-field {
     bottom: -2px;
     width: 100%;
     height: 100%;
-    background-image: url("../images/hero-bg-shape.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: right bottom;
@@ -1075,7 +1084,7 @@ textarea.input-field {
     max-width: 960px;
   }
 
-  .has-scrollbar > li {
+  .has-scrollbar>li {
     min-width: calc(33.33% - 6.66px);
   }
 
