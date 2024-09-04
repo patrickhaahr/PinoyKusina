@@ -729,6 +729,40 @@ h2 span {
   display: inline;
 }
 
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.button-container button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-container button:first-child {
+  background-color: var(--deep-saffron);
+  /* Green color for Place Order button */
+}
+
+.button-container button:first-child:hover {
+  background-color: var(--deep-saffron);
+}
+
+.button-container button:last-child {
+  background-color: #f44336;
+  /* Red color for Cancel Order button */
+}
+
+.button-container button:last-child:hover {
+  background-color: #d32f2f;
+}
+
 /*-----------------------------------*\
   #FOOTER
 \*-----------------------------------*/

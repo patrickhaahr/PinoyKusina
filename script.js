@@ -213,12 +213,11 @@ function updateOrderDetails() {
     const item = orderedItems[itemName];
     const listItem = document.createElement("li");
     listItem.innerHTML = `
-            <button class="modify-btn" onclick="addItem('${itemName}', ${item.price
-      })">+</button>
-            x<span>${item.quantity
-      }</span><button class="modify-btn" onclick="removeItem('${itemName}')">-</button>${itemName} ${item.price * item.quantity
-      }kr.
-        `;
+      <button class="modify-btn" onclick="removeItem('${itemName}')">-</button>
+      x<span>${item.quantity}</span>
+      ${itemName} ${item.price * item.quantity}kr.
+      <button class="modify-btn" onclick="addItem('${itemName}', ${item.price})">+</button>
+    `;
     orderList.appendChild(listItem);
   }
   updateCartButtons();
@@ -228,7 +227,6 @@ function updateOrderDetails() {
   document.getElementById(
     "cart-btn"
   ).textContent = `(${getOrderQuantity()}) Show order ${total.toFixed(2)}kr.`;
-  // If the cart is empty, hide the dropdown
   if (total === 0) {
     document.getElementById("shopping-cart-dropdown").style.display = "none";
   }
