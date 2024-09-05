@@ -11,8 +11,6 @@ Key features include:
 - Interactive food menu with filtering options
 - Shopping cart functionality
 - User-friendly navigation
-- Social media integration
-- Newsletter subscription
 
 ## Setting Up the Project
 
